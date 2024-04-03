@@ -1,16 +1,17 @@
+---
 name: Dependabot auto
 on:
-  pull_request:
-  workflow_dispatch:
-  merge_group:
+    pull_request:
+    workflow_dispatch:
+    merge_group:
 
 permissions:
-  contents: write
-  pull-requests: write
+    contents: write
+    pull-requests: write
 
 jobs:
-  auto-approve:
-    uses: Space-Machines-Company/roll-out-dev/.github/workflows/dependabot-auto-approve.yaml@main
-  auto-merge:
-    needs: auto-approve
-    uses: Space-Machines-Company/roll-out-dev/.github/workflows/dependabot-auto-merge.yaml@main
+    auto-approve:
+        uses: Space-Machines-Company/roll-out-dev/.github/workflows/dependabot-auto-approve.yaml@main
+    auto-merge:
+        needs: auto-approve
+        uses: Space-Machines-Company/roll-out-dev/.github/workflows/dependabot-auto-merge.yaml@main
