@@ -21,6 +21,7 @@ USER $USERNAME
 # Install apt packages
 RUN sudo apt-get update && \
     sudo apt-get install -y \
+    ros-$ROS_DISTRO-rqt \
     ros-$ROS_DISTRO-rviz2
 
 ################################################################################
