@@ -18,18 +18,6 @@ RUN if [ "$(id -un)" != "$USERNAME" ] ; then \
 USER $USERNAME
 
 ################################################################################
-# Install apt packages
-RUN sudo apt-get update && \
-    sudo apt-get install -y \
-    ros-$ROS_DISTRO-rviz2
-
-################################################################################
-# Install pip packages
-RUN pip install \
-    pdm \
-    pre-commit
-
-################################################################################
 # Extend bash shell
 RUN if [ -d ~/.oh-my-bash ]; then \
     echo "Directory ~/.oh-my-bash already exists. Not installing"; \
@@ -41,6 +29,27 @@ else \
         echo "Oh My Bash installed and theme modified"; \
     fi; \
 fi
+
+################################################################################
+# Install apt packages
+## editors: vim, nano
+## utils: git tree file
+RUN sudo apt-get update && \
+    sudo apt-get install -y \
+    vim nano \
+    git tree file
+
+## ros2: ros-$ROS_DISTRO-*
+## note: use individual RUN commands to allow for caching
+RUN sudo apt-get install -y ros-$ROS_DISTRO-rviz2
+### rqt and its plugins
+RUN sudo apt-get install -y ros-$ROS_DISTRO-rqt*
+
+################################################################################
+# Install pip packages
+RUN pip install \
+    pdm \
+    pre-commit
 
 ################################################################################
 ENTRYPOINT ["/bin/bash"]
