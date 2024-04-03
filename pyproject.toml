@@ -1,0 +1,13 @@
+[project]
+name = "dev-image-ros2"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "Nathanael Gandhi", email = "nat11public@gmail.com"},
+]
+dependencies = []
+requires-python = ">=3.10"
+readme = "README.md"
+
+[tool.pdm]
+distribution = false
