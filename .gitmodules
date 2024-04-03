@@ -1,0 +1,3 @@
+[submodule "base-image-ros2"]
+	path = base-image-ros2
+	url = git@github.com:NathanaelGandhi/base-image-ros2.git
