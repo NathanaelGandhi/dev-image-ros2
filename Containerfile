@@ -18,26 +18,13 @@ RUN if [ "$(id -un)" != "$USERNAME" ] ; then \
 USER $USERNAME
 
 ################################################################################
-# Extend bash shell
-RUN if [ -d ~/.oh-my-bash ]; then \
-    echo "Directory ~/.oh-my-bash already exists. Not installing"; \
-else \
-    echo "Downloading oh-my-bash" && \
-    bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" --unattended && \
-    sed -i 's/OSH_THEME="font"/OSH_THEME="vscode"/g' ~/.bashrc && \
-    if [ $? -eq 0 ]; then \
-        echo "Oh My Bash installed and theme modified"; \
-    fi; \
-fi
-
-################################################################################
 # Install apt packages
 ## editors: vim, nano
-## utils: git tree file
+## utils: git tree file curl
 RUN sudo apt-get update && \
     sudo apt-get install -y \
     vim nano \
-    git tree file
+    git tree file curl
 
 ## ros2: ros-$ROS_DISTRO-*
 ## note: use individual RUN commands to allow for caching
@@ -50,6 +37,19 @@ RUN sudo apt-get install -y ros-$ROS_DISTRO-rqt*
 RUN pip install \
     pdm \
     pre-commit
+
+################################################################################
+# Extend bash shell
+RUN if [ -d ~/.oh-my-bash ]; then \
+    echo "Directory ~/.oh-my-bash already exists. Not installing"; \
+else \
+    echo "Downloading oh-my-bash" && \
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" --unattended && \
+    sed -i 's/OSH_THEME="font"/OSH_THEME="vscode"/g' ~/.bashrc && \
+    if [ $? -eq 0 ]; then \
+        echo "Oh My Bash installed and theme modified"; \
+    fi; \
+fi
 
 ################################################################################
 ENTRYPOINT ["/bin/bash"]
