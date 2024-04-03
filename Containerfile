@@ -22,11 +22,12 @@ USER $USERNAME
 ## editors: nano vim
 ## linux utils: file tree
 ## ros: ros-$ROS_DISTRO-...
+### ros-$ROS_DISTRO-rqt*: rqt and its plugins
 RUN sudo apt-get update && \
     sudo apt-get install -y \
     nano vim \
     file tree \
-    ros-$ROS_DISTRO-rqt \
+    ros-$ROS_DISTRO-rqt* \
     ros-$ROS_DISTRO-rviz2
 
 ################################################################################
