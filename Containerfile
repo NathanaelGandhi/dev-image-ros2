@@ -20,11 +20,13 @@ USER $USERNAME
 ################################################################################
 # Install apt packages
 ## editors: vim, nano
-## utils: git tree file curl
+## utils-core: git ...
+## utils-n2h: tree ...
 RUN sudo apt-get update && \
     sudo apt-get install -y \
     vim nano \
-    git tree file curl
+    git ssh curl \
+    tree file htop
 
 ## ros2: ros-$ROS_DISTRO-*
 ## note: use individual RUN commands to allow for caching
