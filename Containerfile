@@ -20,13 +20,13 @@ USER $USERNAME
 ################################################################################
 # Install apt packages
 ## editors: nano vim
-## linux utils: file tree
+## linux utils: git file tree
 ## ros: ros-$ROS_DISTRO-...
 ### ros-$ROS_DISTRO-rqt*: rqt and its plugins
 RUN sudo apt-get update && \
     sudo apt-get install -y \
     nano vim \
-    file tree \
+    git file tree \
     ros-$ROS_DISTRO-rqt* \
     ros-$ROS_DISTRO-rviz2
 
