@@ -30,9 +30,9 @@ RUN sudo apt-get update && \
 
 ## ros2: ros-$ROS_DISTRO-*
 ## note: use individual RUN commands to allow for caching
-RUN sudo apt-get install -y ros-$ROS_DISTRO-rviz2
+RUN sudo apt-get install -y ros-${ROS_DISTRO}-rviz2
 ### rqt and its plugins
-RUN sudo apt-get install -y ros-$ROS_DISTRO-rqt*
+RUN sudo apt-get install -y ros-${ROS_DISTRO}-rqt*
 ### gazebo & ros_gz
 RUN sudo apt-get install -y ros-${ROS_DISTRO}-ros-gz
 
