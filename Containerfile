@@ -26,7 +26,8 @@ RUN sudo apt-get update && \
     sudo apt-get install -y \
     vim nano \
     git ssh curl \
-    tree file htop
+    tree file htop \
+    clang-format
 
 ## ros2: ros-$ROS_DISTRO-*
 ## note: use individual RUN commands to allow for caching
