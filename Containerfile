@@ -26,8 +26,7 @@ RUN sudo apt-get update && \
     sudo apt-get install -y \
     vim nano \
     git ssh curl \
-    tree file htop \
-    clang-format
+    tree file htop
 
 ## ros2: ros-$ROS_DISTRO-*
 ## note: use individual RUN commands to allow for caching
@@ -39,9 +38,11 @@ RUN sudo apt-get install -y ros-${ROS_DISTRO}-ros-gz
 
 ################################################################################
 # Install pip packages
+## clang-format from apt is very old (~v14) vs pip v18+
 RUN pip install \
     pdm \
-    pre-commit
+    pre-commit \
+    clang-format
 
 ################################################################################
 # Extend bash shell
