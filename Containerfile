@@ -37,7 +37,8 @@ RUN sudo apt-get install -y ros-${ROS_DISTRO}-rviz2
 RUN sudo apt-get install -y ros-${ROS_DISTRO}-rqt*
 ### gazebo & ros_gz
 RUN sudo apt-get install -y ros-${ROS_DISTRO}-ros-gz
-
+### behaviourtree-cpp
+RUN sudo apt-get install -y ros-${ROS_DISTRO}-behaviortree-cpp
 ################################################################################
 # Install pip packages
 ## clang-format from apt is very old (~v14) vs pip v18+
