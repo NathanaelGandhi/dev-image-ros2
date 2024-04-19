@@ -26,7 +26,8 @@ RUN sudo apt-get update && \
     sudo apt-get install -y \
     vim nano \
     git ssh curl \
-    tree file htop
+    tree file htop \
+    direnv
 
 ## ros2: ros-$ROS_DISTRO-*
 ## note: use individual RUN commands to allow for caching
@@ -56,6 +57,9 @@ else \
         echo "Oh My Bash installed and theme modified"; \
     fi; \
 fi
+
+# Hook direnv
+RUN echo 'eval "$(direnv hook bash)"' >> ~/.bashrc
 
 ################################################################################
 ENTRYPOINT ["/bin/bash"]
