@@ -1,6 +1,7 @@
-FROM ghcr.io/nathanaelgandhi/base-image-ros2:main
-
 ARG ROS_DISTRO=humble
+FROM ghcr.io/nathanaelgandhi/base-image-ros2:main
+LABEL ROS_DISTRO=${ROS_DISTRO}
+LABEL NAME="dev-image-ros2"
 
 ################################################################################
 # Adds non-root user
